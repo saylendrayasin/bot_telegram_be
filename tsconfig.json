@@ -15,7 +15,8 @@
     "isolatedModules": true,
     "noEmit": false,
     "outDir": "./dist",
-    "strict": false
+    "strict": false,
+    "types": ["express"]
   },
   "include": ["./global.d.ts", "./src", "main.ts"],
   "ts-node": {
