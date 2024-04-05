@@ -14,8 +14,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": false,
-    "outDir": "./dist"
-    // "strict": true
+    "outDir": "./dist",
+    "strict": true
   },
   "include": ["./global.d.ts", "./src", "./src-server", "./src/shared"],
   "ts-node": {
