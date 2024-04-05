@@ -1,5 +1,5 @@
 import express, { Router, Request, Response } from 'express';
-import Config from './config/config';
+import Config from './src/config/config';
 import mongoose from 'mongoose';
 
 const ConnectDB = async () => {
@@ -40,7 +40,7 @@ app.use('/api', RouterApi);
     RouterApi.get('/', (req: Request, res: Response) => {
       res.send('Hello World!');
     });
-    RouterApi.use('/user', require('./routes/user'));
+    RouterApi.use('/user', require('./src/routes/user'));
     RouterApi.use('*', (req: Request, res: Response) => {
       res.status(404).send('404 Not Found');
     });

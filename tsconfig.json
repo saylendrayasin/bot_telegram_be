@@ -17,7 +17,7 @@
     "isolatedModules": true,
     "noEmit": true
   },
-  "include": ["./global.d.ts", "./src"],
+  "include": ["./global.d.ts", "./src", "main.ts"],
   "ts-node": {
     "swc": true,
     "transpileOnly": true
