@@ -8,7 +8,7 @@
     "start": "ts-node main.ts",
     "dev": "nodemon main.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx tsc"
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
