@@ -1,18 +1,25 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es6",
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
     "noImplicitAny": false,
+    "module": "CommonJS",
     "moduleResolution": "node",
-    "sourceMap": true,
-    "outDir": "dist",
-    "baseUrl": ".",
-    "strict": false,
-    "paths": {
-      "*": ["node_modules/*", "src/*"]
-    }
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": false,
+    "outDir": "./dist"
+    // "strict": true
   },
-  "include": ["./src/**/*", "./global.d.ts"]
+  "include": ["./global.d.ts", "./src", "./src-server", "./src/shared"],
+  "ts-node": {
+    "swc": true,
+    "transpileOnly": true
+  }
 }

@@ -3,7 +3,7 @@ import { ModuleUser } from '../model/user';
 
 const RouterUser = express.Router();
 
-RouterUser.get('/:id', [], async (req, res) => {
+RouterUser.get('/:id', async (req, res) => {
   try {
     const id = req.params.id;
 
@@ -24,7 +24,7 @@ RouterUser.get('/:id', [], async (req, res) => {
   } catch (error) {
     res.status(500).json({
       status: false,
-      message: error.message,
+      message: 'Internal server error',
     });
   }
 });
@@ -50,7 +50,7 @@ RouterUser.post('/', async (req, res) => {
   } catch (error) {
     res.status(500).json({
       status: false,
-      message: error.message,
+      message: 'Internal server error',
     });
   }
 });
@@ -77,7 +77,7 @@ RouterUser.patch('/:id', async (req, res) => {
   } catch (error) {
     res.status(500).json({
       status: false,
-      message: error.message,
+      message: 'Internal server error',
     });
   }
 });
