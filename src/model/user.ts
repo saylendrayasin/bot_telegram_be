@@ -1,5 +1,13 @@
 import mongoose, { Schema } from 'mongoose';
 
+export interface TUser {
+  _id: string;
+  telegramId: string;
+  coin: number;
+  createdAt?: any;
+  updatedAt?: any;
+}
+
 const UserSchema = new Schema<Omit<TUser, 'id'>>(
   {
     telegramId: { type: String, required: true },

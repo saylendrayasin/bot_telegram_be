@@ -1,4 +1,4 @@
-declare type TUser = {
+declare type Tuser = {
   _id: string;
   telegramId: string;
   coin: number;
