@@ -17,9 +17,5 @@
     "outDir": "./dist",
     "strict": true
   },
-  "include": ["./global.d.ts", "./src", "./src-server", "./src/shared"],
-  "ts-node": {
-    "swc": true,
-    "transpileOnly": true
-  }
+  "include": ["./global.d.ts", "./src", "main.ts"]
 }
