@@ -1,27 +1,24 @@
 import express, { Router, Request, Response } from 'express';
-import Config from './src/config/config';
+// import Config from './src/config/config';
+import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
+dotenv.config();
+
 const ConnectDB = async () => {
-  const MongoURI = Config.DATABASE;
-  return new Promise((resolve, reject) => {
-    mongoose.set('strictQuery', false);
-    mongoose
-      .connect(MongoURI)
-      .then(() => {
-        console.log('MongoDB Connected');
-        resolve(true);
-      })
-      .catch((err) => {
-        console.log(err);
-        reject(false);
-      });
-  });
+  const MongoURI = `${process.env.DATABASE}`;
+  try {
+    await mongoose.connect(MongoURI);
+    console.log('MongoDB Connected');
+  } catch (err) {
+    console.error('MongoDB Connection Error:', err);
+    throw err;
+  }
 };
 
 const cors = require('cors');
 const app = express();
-const port = Config.PORT;
+const port = process.env.PORT || 5001;
 const RouterApi = Router();
 
 app.use(express.urlencoded({ limit: '30000kb', extended: true }));
