@@ -42,7 +42,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var user_1 = require("../model/user");
 var RouterUser = express_1.default.Router();
-RouterUser.get('/:id', [], function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+RouterUser.get('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var id, user, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -68,7 +68,7 @@ RouterUser.get('/:id', [], function (req, res) { return __awaiter(void 0, void 0
                 error_1 = _a.sent();
                 res.status(500).json({
                     status: false,
-                    message: error_1.message,
+                    message: 'Internal server error',
                 });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
@@ -101,7 +101,7 @@ RouterUser.post('/', function (req, res) { return __awaiter(void 0, void 0, void
                 error_2 = _a.sent();
                 res.status(500).json({
                     status: false,
-                    message: error_2.message,
+                    message: 'Internal server error',
                 });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
@@ -135,7 +135,7 @@ RouterUser.patch('/:id', function (req, res) { return __awaiter(void 0, void 0, 
                 error_3 = _a.sent();
                 res.status(500).json({
                     status: false,
-                    message: error_3.message,
+                    message: 'Internal server error',
                 });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];

@@ -63,30 +63,35 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importStar(require("express"));
-var config_1 = __importDefault(require("./src/config/config"));
+// import Config from './src/config/config';
+var dotenv_1 = __importDefault(require("dotenv"));
 var mongoose_1 = __importDefault(require("mongoose"));
+dotenv_1.default.config();
 var ConnectDB = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var MongoURI;
+    var MongoURI, err_1;
     return __generator(this, function (_a) {
-        MongoURI = config_1.default.DATABASE;
-        return [2 /*return*/, new Promise(function (resolve, reject) {
-                mongoose_1.default.set('strictQuery', false);
-                mongoose_1.default
-                    .connect(MongoURI)
-                    .then(function () {
-                    console.log('MongoDB Connected');
-                    resolve(true);
-                })
-                    .catch(function (err) {
-                    console.log(err);
-                    reject(false);
-                });
-            })];
+        switch (_a.label) {
+            case 0:
+                MongoURI = "".concat(process.env.DATABASE);
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, mongoose_1.default.connect(MongoURI)];
+            case 2:
+                _a.sent();
+                console.log('MongoDB Connected');
+                return [3 /*break*/, 4];
+            case 3:
+                err_1 = _a.sent();
+                console.error('MongoDB Connection Error:', err_1);
+                throw err_1;
+            case 4: return [2 /*return*/];
+        }
     });
 }); };
 var cors = require('cors');
 var app = (0, express_1.default)();
-var port = config_1.default.PORT;
+var port = process.env.PORT || 5001;
 var RouterApi = (0, express_1.Router)();
 app.use(express_1.default.urlencoded({ limit: '30000kb', extended: true }));
 app.use(express_1.default.json({ limit: '30000kb' }));
