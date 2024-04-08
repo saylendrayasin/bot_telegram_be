@@ -91,7 +91,7 @@ var ConnectDB = function () { return __awaiter(void 0, void 0, void 0, function 
 }); };
 var cors = require('cors');
 var app = (0, express_1.default)();
-var port = process.env.PORT || 5001;
+var port = process.env.PORT || 3000;
 var RouterApi = (0, express_1.Router)();
 app.use(express_1.default.urlencoded({ limit: '30000kb', extended: true }));
 app.use(express_1.default.json({ limit: '30000kb' }));

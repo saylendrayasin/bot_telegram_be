@@ -9,7 +9,7 @@
     "dev": "nodemon main.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "bot": "nodemon --exec ts-node ./bot/bot.ts",
-    "build": "tsc",
+    "build": "npx tsc",
     "vercel-build": "echo Holla"
   },
   "keywords": [],
