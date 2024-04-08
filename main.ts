@@ -1,5 +1,4 @@
 import express, { Router, Request, Response } from 'express';
-// import Config from './src/config/config';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
