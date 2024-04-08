@@ -14,7 +14,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": false,
-    "outDir": "./dist",
+    "outDir": "dist",
     "strict": true
   },
   "include": ["./global.d.ts", "./src", "main.ts"]
