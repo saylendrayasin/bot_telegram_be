@@ -4,14 +4,27 @@ export type TUser = {
   _id: string;
   telegramId: string;
   coin: number;
+  refferalCode?: string;
+  refferalFrom?: string;
+  refferalUserIds?: string[];
   createdAt?: any;
   updatedAt?: any;
 };
 
 const UserSchema = new Schema<Omit<TUser, 'id'>>(
   {
-    telegramId: { type: String, required: true },
+    telegramId: { type: String, required: true, unique: true },
     coin: { type: Number, default: 0 },
+    refferalCode: {
+      type: String,
+      unique: true,
+      default: () => {
+        return new mongoose.Types.ObjectId().toHexString();
+      },
+      required: true,
+    },
+    refferalFrom: { type: String, default: '' },
+    refferalUserIds: { type: [String], default: [] },
   },
   {
     timestamps: true,
@@ -24,8 +37,32 @@ export default ModelUser;
 
 //Module User
 
-async function addUser(telegramId: string) {
-  const user = new ModelUser({ telegramId });
+async function addUser(telegramId: string, refferalCode?: string) {
+  let data = {};
+
+  if (refferalCode) {
+    const userRefferal = await ModelUser.findOneAndUpdate(
+      { refferalCode },
+      {
+        $push: {
+          refferalUserIds: telegramId,
+        },
+      }
+    ).select('telegramId');
+
+    if (!userRefferal) {
+      throw new Error('Kode refferal tidak ditemukan');
+    }
+
+    data = {
+      refferalFrom: userRefferal.telegramId,
+    };
+  }
+
+  const user = new ModelUser({
+    ...data,
+    telegramId,
+  });
 
   await user.save();
 

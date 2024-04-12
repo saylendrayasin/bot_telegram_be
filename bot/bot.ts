@@ -3,7 +3,7 @@ import TelegramBot from 'node-telegram-bot-api';
 const token = '6895324536:AAHc4ul28qzrPbBU11q7dsDOcnIQNTb9lsg';
 const bot = new TelegramBot(token, { polling: true });
 
-const prefix = '-';
+const prefix = '/';
 const webLink = 'https://main--fabulous-marshmallow-8a49ec.netlify.app/';
 
 const regexPatterns = {
@@ -24,6 +24,8 @@ Welcome to Hart Bot!
 
 Please choose an option below:
 `;
+
+    console.log(msg);
 
     const userId = msg.from.id;
     const link = `${webLink}?id=${userId}`;

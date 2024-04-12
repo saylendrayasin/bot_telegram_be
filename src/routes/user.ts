@@ -32,6 +32,7 @@ RouterUser.get('/:id', async (req, res) => {
 RouterUser.post('/', async (req, res) => {
   try {
     const telegramId = req.body.telegramId;
+    const refferalCode = req.body?.refferalCode || null;
 
     if (!telegramId) {
       return res.status(400).json({
@@ -40,7 +41,7 @@ RouterUser.post('/', async (req, res) => {
       });
     }
 
-    const user = await ModuleUser.addUser(telegramId);
+    const user = await ModuleUser.addUser(telegramId, refferalCode);
 
     res.status(200).json({
       status: true,
@@ -50,7 +51,7 @@ RouterUser.post('/', async (req, res) => {
   } catch (error) {
     res.status(500).json({
       status: false,
-      message: 'Internal server error',
+      message: `Internal server error: ${error}`,
     });
   }
 });
